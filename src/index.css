@@ -71,24 +71,12 @@ code {
     flex-direction: row;
 }
 
-.form-group-radio label {
-}
-
-.form-group-radio input {
-
-}
 
 .dynamic-form .form-group-checkbox {
     display: flex;
     flex-direction: row;
 }
 
-.form-group-checkbox label {
-}
-
-.form-group-checkbox input {
-
-}
 
 .form-title {
     text-align: left;

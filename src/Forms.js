@@ -82,10 +82,10 @@ export default class App extends Component {
               ]
             },
             {
-              key: "rating", validations: [
+              key: "pain", validations: [
                 {
                   "validator": Validator.validateRating,
-                  "message": "Rating should be between 0 and 5"
+                  "message": "Pain should be between 0 and 5"
                 },
               ]
             }
@@ -93,12 +93,6 @@ export default class App extends Component {
           model={[
             { key: "name", label: "Name", props: { required: true } },
             { key: "age", label: "Age", type: "number" },
-            {
-              key: "rating",
-              label: "Rating",
-              type: "number",
-              props: { min: 0, max: 5 }
-            },
             {
               key: "gender",
               label: "Gender",
@@ -113,26 +107,33 @@ export default class App extends Component {
                 }
               ]
             },
-            { key: "qualification", label: "Qualification" },
+            { key: "exam", label: "Exam Type" },
             {
-              key: "city",
-              label: "City",
+              key: "pain",
+              label: "Pain scale (0 to 5)",
+              type: "number",
+              props: { min: 0, max: 5 }
+            },
+            {
+              key: "kidney",
+              label: "Which Kidney",
               type: "select",
-              value: "Mumbai",
+              value: "None",
               options: [
-                { key: "mumbai", label: "Mumbai", value: "Mumbai" },
-                { key: "bangalore", label: "Bangalore", value: "Bangalore" },
-                { key: "kerala", label: "Kerala", value: "Kerala" }
+                { key: "none", label: "None", value: "None" },
+                { key: "left", label: "Left", value: "Left" },
+                { key: "right", label: "Right", value: "Right" },
+                { key: "both", label: "Both", value: "Both" }
               ]
             },
             {
-              key: "skills",
-              label: "Skills",
+              key: "habits",
+              label: "Habits / Antecedents",
               type: "checkbox",
               options: [
-                { key: "reactjs", label: "ReactJS", value: "reactjs" },
-                { key: "angular", label: "Angular", value: "angular" },
-                { key: "vuejs", label: "VueJS", value: "vuejs" }
+                { key: "smoker", label: "Smoker", value: "Smoker" },
+                { key: "drugs", label: "Drug Abuse", value: "Drug Abuse" },
+                { key: "surgery", label: "Surgery", value: "Surgery" }
               ]
             }
           ]}
