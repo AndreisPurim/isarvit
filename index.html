@@ -1,0 +1,44 @@
+
+
+<script type="text/javascript" src="js/html2pdf.bundle.min.js"></script>
+<script type="text/javascript" src="js/qrcode.min.js"></script>
+<script type="text/javascript" src="js/json2yaml.js"></script>
+<script type="text/javascript" src="index.js"></script>
+<style>
+    #toPDF, #btnPDF{
+        visibility: hidden;
+    }
+    label {
+        display: inline-block;
+        width: 150px;
+        text-align: right;
+      }
+</style>
+
+<body onload="init();">
+    Remember to read the <a href="https://github.com/AndreisPurim/isarvit/tree/main">README</a>
+    <div id="started">
+        Not Loaded!
+    </div>
+    <form onsubmit="handleSubmit(event);return false">
+        <label>Patient identifier:</label> <input type="text" name="identifier" id="identifier"><br>
+        <label>First name:</label> <input type="text" name="patient_first_name" id="patient_first_name"><br>
+        <label>Name:</label> <input type="text" name="patient_name" id="patient_name"><br>
+        <label>Date of birth:</label><input type="date" name="patient_birth" id="patient_birth"><br>
+        <button type="submit">Submit</button>
+    </form>
+    <button id="btnPDF" onclick="generatePDF()">Download as PDF</button>
+    <div id="toPDF">
+        <b>Json:</b>
+        <pre id="json"></pre>
+        <b>Yaml:</b>
+        <pre id="yaml"></pre>
+        <b>SVG:</b>
+        <div id="svg"></div>
+        <b>QRCode:</b>
+        <div id="qrcode"></div>
+    </div>
+    
+</body>
+
+
