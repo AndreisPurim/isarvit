@@ -25,6 +25,14 @@
         <label>First name:</label> <input type="text" name="patient_first_name" id="patient_first_name"><br>
         <label>Name:</label> <input type="text" name="patient_name" id="patient_name"><br>
         <label>Date of birth:</label><input type="date" name="patient_birth" id="patient_birth"><br>
+        <label>Image:</label>
+        <select name="image" id="image">
+            <option value="Image1">Urinary System 1</option>
+            <option value="Image2">Urinary Tract (Test)</option>
+            <option value="Image3">Urinary System 3</option>
+            <option value="Image4">Rectangle</option>
+          </select>
+        <br>
         <button type="submit">Submit</button>
     </form>
     <button id="btnPDF" onclick="generatePDF()">Download as PDF</button>
@@ -34,7 +42,14 @@
         <b>Yaml:</b>
         <pre id="yaml"></pre>
         <b>SVG:</b>
-        <div id="svg"></div>
+        <br>
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400" height="400">
+            <g onclick="clicked(evt);" id="svg"> 
+            </g>
+        </svg> 
+        Image2PDF (TEST):
+        <img src="images/3.PNG" alt="">
+        <br>
         <b>QRCode:</b>
         <div id="qrcode"></div>
     </div>

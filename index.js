@@ -28,12 +28,31 @@ function handleSubmit(event) {
     document.getElementById("qrcode").innerHTML = "";
     new QRCode(document.getElementById("qrcode"), YAMLdata);
 
-    svgDiv.innerHTML = "<br><svg width=\"100\" height=\"100\" id=\"img\"><circle cx=\"50\" cy=\"50\" r=\"40\" stroke=\"green\" stroke-width=\"4\" fill=\"yellow\"/></svg><br><br>"
+    svgDiv.innerHTML = json_alo[value["image"]];
     pdfDiv.style.visibility = "visible";
     btnPDF.style.visibility = "visible";
 }
 
+json_alo = {
+    "Image1": "<image xlink:href=\"images/2.PNG\"/>",
+    "Image2": "<image width=\"300\" height=\"300\" xlink:href=\"images/test1.svg\"/>",
+    "Image3": "<image xlink:href=\"images/3.PNG\"/>",
+    "Image4": "<rect width=\"300\" height=\"300\" fill=\"blue\"/>",
+}
+
+function clicked(evt){
+    var e = evt.target;
+    var dim = e.getBoundingClientRect();
+    var x = evt.clientX - dim.left;
+    var y = evt.clientY - dim.top;
+    svgDiv.innerHTML += "<circle cx=\""+x+"\" cy=\""+y+"\" r=\"10\" stroke=\"black\" stroke-width=\"3\" fill=\"red\" />"
+}  
+
 function generatePDF() {
-    html2pdf().from(pdfDiv).save();
+    var opt = {
+        margin:       1,
+        filename:     'CR_Isarvit.pdf',
+      };
+    html2pdf().set(opt).from(pdfDiv).save();
 }
   
