@@ -11,4 +11,6 @@ Everything you change in the main will appear at [https://andreispurim.github.io
 -  **Image Pôle:** The JSON and YAML should already work and already generate the QRCode. What needs to be done is an `<svg>` model based on pages 40-43 of the [thesis](https://drive.google.com/file/d/1I8Mg3GRDQOg-nG973263mFj2iZOjiaCP/view?usp=sharing)
 - **CR Pôle:** Based on these [answers](https://github.com/arthurldp/medical_imaging_report/blob/master/ICIPEMIR_urolithiasis.instance.yaml) of an Exam, try to create an automatic CR based on page 61 of the [thesis](https://drive.google.com/file/d/1I8Mg3GRDQOg-nG973263mFj2iZOjiaCP/view?usp=sharing). To format the data in the PDF, you need to create html tags inside the `<div  id="toPDF">` and use CSS to style them. Everything there will be printed as-is.
 
+For the moment, we need to reintegrate all domains
+
 Talk to Andreis if needed to.
