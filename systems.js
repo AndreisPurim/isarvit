@@ -150,7 +150,7 @@ const urinary_system = {
                 }  
             ]
         }
-    ],
+    ]
 }
 
 

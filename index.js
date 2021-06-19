@@ -77,7 +77,7 @@ function handleSubmit(){
                 svgDiv.innerHTML+= system.organs[i].states[j].svg;
             }
             if(JSONdata['marker'] === system.organs[i].id){
-                svgDiv.innerHTML+= "<rect x=\""+system.organs[i].markerx+"\" y=\""+system.organs[i].markery+"\"width=\"75\" height=\"75\" stroke=\"black\" stroke-width=\"2\" fill=\"green\"/>"
+                svgDiv.innerHTML+= "<rect x=\""+system.organs[i].markerx+"\" y=\""+system.organs[i].markery+"\" width=\"75\" height=\"75\" stroke=\"black\" stroke-width=\"2\" fill=\"green\"/>"
             }
         }
         
