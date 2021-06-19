@@ -1,9 +1,13 @@
 const urinary_system = {
     "name": "Urinary",
+    "begin": "<svg id=\"svgDiv\" viewBox=\"0 0 820 800\" width=\"150\" height=\"150\" xmlns=\"http://www.w3.org/2000/svg\">",
+    "end": "</svg>",
     "organs": [
         {
             "label": "Left Ureter",
             "id": "left_ureter",
+            "markerx": 213,
+            "markery": 337,
             "states": [
                 {
                     "stateid": "left_ureter_select",
@@ -25,6 +29,8 @@ const urinary_system = {
         {
             "label": "Right Ureter",
             "id": "right_ureter",
+            "markerx": 495,
+            "markery": 337,
             "states": [
                 {
                     "stateid": "right_ureter_select",
@@ -46,6 +52,8 @@ const urinary_system = {
         {
             "label": "Bladder",
             "id": "bladder",
+            "markerx": 362,
+            "markery": 615,
             "states": [
                 {
                     "stateid": "bladder_select",
@@ -63,6 +71,8 @@ const urinary_system = {
         {
             "label": "Left Kidney",
             "id": "left_kidney",
+            "markerx": 9,
+            "markery": 133,
             "states": [
                 {
                     "stateid": "left_kidney_select",
@@ -84,6 +94,8 @@ const urinary_system = {
         {
             "label": "Right Kidney",
             "id": "right_kidney",
+            "markerx": 692,
+            "markery": 133,
             "states": [
                 {
                     "stateid": "right_kidney_select",
@@ -105,6 +117,8 @@ const urinary_system = {
         {
             "label": "Left Neuron",
             "id": "left_neuron",
+            "markerx": 87,
+            "markery": 91,
             "states": [
                 {
                     "stateid": "left_neuron_select",
@@ -121,6 +135,8 @@ const urinary_system = {
         {
             "label": "Right Neuron",
             "id": "right_neuron",
+            "markerx": 624,
+            "markery": 89,
             "states": [
                 {
                     "stateid": "right_neuron_select",
@@ -134,7 +150,7 @@ const urinary_system = {
                 }  
             ]
         }
-    ]
+    ],
 }
 
 

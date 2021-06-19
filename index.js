@@ -34,7 +34,7 @@ function handleSubmit(){
             systemDiv.appendChild(systemName)
             for(var i=0; i<system.organs.length; i++){
                 var newOrgan = document.createElement("label");
-                newOrgan.innerHTML = system.organs[i].label + ":"
+                newOrgan.innerHTML = system.organs[i].label + ": "
                 systemDiv.appendChild(newOrgan)
                 var newSelect = document.createElement("select");
                 newSelect.setAttribute("name", system.organs[i].id);
@@ -51,6 +51,22 @@ function handleSubmit(){
                 systemDiv.appendChild(newSelect);
                 systemDiv.appendChild(document.createElement("br"));
             }
+            var markerlabel = document.createElement("label");
+            markerlabel.innerHTML = "Marker: "
+            systemDiv.appendChild(markerlabel)
+            var marker = document.createElement("select");
+            marker.setAttribute("name", "marker");
+            marker.setAttribute("id", "marker");
+            for(var i=0; i<system.organs.length; i++){
+                var opt = document.createElement("option");
+                    opt.setAttribute("value", system.organs[i].id);
+                    if(JSONdata['marker'] === system.organs[i].id){
+                        opt.selected = true;
+                    }
+                    opt.text = system.organs[i].label;
+                    marker.appendChild(opt);
+            }
+            systemDiv.appendChild(marker);
         }
     }
     if(value.system !== "no_system"){
@@ -60,7 +76,12 @@ function handleSubmit(){
                 if(JSONdata[system.organs[i].id] === system.organs[i].states[j].stateid)
                 svgDiv.innerHTML+= system.organs[i].states[j].svg;
             }
+            if(JSONdata['marker'] === system.organs[i].id){
+                svgDiv.innerHTML+= "<rect x=\""+system.organs[i].markerx+"\" y=\""+system.organs[i].markery+"\"width=\"75\" height=\"75\" stroke=\"black\" stroke-width=\"2\" fill=\"green\"/>"
+            }
         }
+        
+        svgDiv.innerHTML += system.end
     }
 }
 
