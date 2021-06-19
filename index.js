@@ -1,58 +1,71 @@
-var startedDiv = null;
 var yamlDiv = null;
 var jsonDiv = null;
 var svgDiv = null;
+var systemDiv = null;
+var qrcodeDiv = null;
+var currentsystem = null;
 
 function init() {
-	startedDiv = document.getElementById("started");
     yamlDiv = document.getElementById("yaml");
     jsonDiv = document.getElementById("json");
-    svgDiv = document.getElementById("svg");
+    svgDiv = document.getElementById("svgDiv");
     pdfDiv = document.getElementById("toPDF");
     btnPDF = document.getElementById("btnPDF");
-    startedDiv.innerHTML = "Loaded";
+    systemDiv = document.getElementById("systemDiv");
+    qrcodeDiv = document.getElementById("qrcode");
 }
 
-function handleSubmit(event) {
-    event.preventDefault();
-  
-    const data = new FormData(event.target);
-  
-   const value = Object.fromEntries(data.entries());
-  
+function handleSubmit(){
+    const data = new FormData(document.forms.form);
+    const value = Object.fromEntries(data.entries());
     var JSONdata = value;
     var YAMLdata = json2yaml(JSONdata);
-
     jsonDiv.innerHTML = JSON.stringify(JSONdata)
     yamlDiv.innerHTML = YAMLdata
-    document.getElementById("qrcode").innerHTML = "";
-    new QRCode(document.getElementById("qrcode"), YAMLdata);
-
-    svgDiv.innerHTML = json_alo[value["image"]];
-    pdfDiv.style.visibility = "visible";
-    btnPDF.style.visibility = "visible";
+    qrcodeDiv.innerHTML = "";
+    new QRCode(qrcodeDiv, {text: YAMLdata, correctLevel : QRCode.CorrectLevel.L});
+    if((value.system !== "no_system")||(value.system !== currentsystem)){
+        systemDiv.innerHTML = ""
+        var currentsystem = value.system;
+        var system = getSystem(value.system);
+        if(system){
+            var systemName = document.createElement("p");
+            systemName.innerHTML = system.name;
+            systemDiv.appendChild(systemName)
+            for(var i=0; i<system.organs.length; i++){
+                var newOrgan = document.createElement("label");
+                newOrgan.innerHTML = system.organs[i].label + ":"
+                systemDiv.appendChild(newOrgan)
+                var newSelect = document.createElement("select");
+                newSelect.setAttribute("name", system.organs[i].id);
+                newSelect.setAttribute("id", system.organs[i].id);
+                for(var j=0; j<system.organs[i].states.length; j++){
+                    var opt = document.createElement("option");
+                    opt.setAttribute("value", system.organs[i].states[j].stateid);
+                    if(JSONdata[system.organs[i].id] === system.organs[i].states[j].stateid){
+                        opt.selected = true;
+                    }
+                    opt.text = system.organs[i].states[j].state;
+                    newSelect.appendChild(opt);
+                }
+                systemDiv.appendChild(newSelect);
+                systemDiv.appendChild(document.createElement("br"));
+            }
+        }
+    }
+    if(value.system !== "no_system"){
+        svgDiv.innerHTML = ""
+        for(var i=0; i<system.organs.length; i++){
+            for(var j=0; j<system.organs[i].states.length; j++){
+                if(JSONdata[system.organs[i].id] === system.organs[i].states[j].stateid)
+                svgDiv.innerHTML+= system.organs[i].states[j].svg;
+            }
+        }
+    }
 }
-
-json_alo = {
-    "Image1": "<image xlink:href=\"images/2.PNG\"/>",
-    "Image2": "<image width=\"300\" height=\"300\" xlink:href=\"images/test1.svg\"/>",
-    "Image3": "<image xlink:href=\"images/3.PNG\"/>",
-    "Image4": "<rect width=\"300\" height=\"300\" fill=\"blue\"/>",
-}
-
-function clicked(evt){
-    var e = evt.target;
-    var dim = e.getBoundingClientRect();
-    var x = evt.clientX - dim.left;
-    var y = evt.clientY - dim.top;
-    svgDiv.innerHTML += "<circle cx=\""+x+"\" cy=\""+y+"\" r=\"10\" stroke=\"black\" stroke-width=\"3\" fill=\"red\" />"
-}  
 
 function generatePDF() {
-    var opt = {
-        margin:       1,
-        filename:     'CR_Isarvit.pdf',
-      };
+    var opt = {margin: 1, filename: 'CR_Isarvit.pdf'};
     html2pdf().set(opt).from(pdfDiv).save();
 }
   

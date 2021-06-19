@@ -1,0 +1,57 @@
+label {
+    display: inline-block;
+    width: 150px;
+    padding-top: 0.2rem;
+    text-align: right;
+}
+
+#isarvit{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#readme, #started {
+    text-align: center;
+}
+
+#button{
+    text-align: center;
+    padding: 10px 10px;
+    border: 1px solid black;
+    margin-left: 125px;
+    border-radius: 6px;
+    background-color: rgb(240, 236, 239);
+    font-size: 18px;
+}
+
+#formdiv{
+    font-weight: bold;
+    border: solid 1px black;
+    background-color: lightgray;
+    border-radius: 20px 20px;
+    padding: 20px;
+    margin: auto;
+    left: 50%;
+    transform: translate(-50%,0);
+    display: inline-flex;
+    position: relative;
+}
+
+
+
+#btnPDF {
+    text-align: center;
+}
+
+#toPDF {
+    margin: 20px;
+    text-align: center;
+    position: relative;
+}
+
+#qrcode {
+    display: inline-flex;
+    margin-left: auto;
+    margin-right: auto;
+}
